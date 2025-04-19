@@ -49,6 +49,8 @@
 #include "tooltip.h"
 #include "timer.h"
 
+Server_global server;
+
 #ifdef ENABLE_BATTERY
 #include "battery.h"
 #endif
