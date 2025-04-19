@@ -1,5 +1,5 @@
 project('tint2', 'c',
-  version : '0.6.0',
+  version : '0.11.2025',
   default_options : ['warning_level=2', 'buildtype=debug']
 )
 
@@ -17,7 +17,6 @@ deps = [
   dependency('glib-2.0')
 ]
 
-# Source files (Assuming source files are now in src/ directory)
 srcs = files(
   'src/area.c',
   'src/battery.c',
@@ -39,22 +38,19 @@ srcs = files(
   'src/xsettings-common.c'
 )
 
-# Build the executable
 executable_name = 'tint2'
 exe = executable(executable_name, srcs,
   include_directories : include_directories('src'),
   dependencies : deps,
   install : true,
-  install_dir : '/usr/bin'  # Set binary install directory to /usr/bin
+  install_dir : '/usr/bin'
 )
 
-# Install default config file (Relative path from the top directory)
 install_data('sample.tint2rc',
-  install_dir : '/etc/xdg/tint2',  # Set config file directory to /etc/xdg/tint2
+  install_dir : '/etc/xdg/tint2',
   rename : 'tint2rc'
 )
 
-# Install default icon to /usr/share/tint2 (Relative path from the top directory)
 install_data('default_icon.png',
-  install_dir : '/usr/share/tint2'  # Set icon directory to /usr/share/tint2
+  install_dir : '/usr/share/tint2'
 )
