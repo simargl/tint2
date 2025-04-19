@@ -46,9 +46,8 @@ exe = executable(executable_name, srcs,
   install_dir : '/usr/bin'
 )
 
-install_data('sample.tint2rc',
+install_data('tint2rc',
   install_dir : '/etc/xdg/tint2',
-  rename : 'tint2rc'
 )
 
 install_data('default_icon.png',
