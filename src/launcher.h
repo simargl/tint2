@@ -12,50 +12,50 @@
 #include "xsettings-client.h"
 
 typedef struct Launcher {
-	// always start with area
-	Area area;
-	GSList *list_apps;			// List of char*, each is a path to a app.desktop file
-	GSList *list_icons; 		// List of LauncherIcon*
-	GSList *list_themes;		// List of IconTheme*
+    // always start with area
+    Area area;
+    GSList *list_apps;			// List of char*, each is a path to a app.desktop file
+    GSList *list_icons; 		// List of LauncherIcon*
+    GSList *list_themes;		// List of IconTheme*
 } Launcher;
 
 typedef struct LauncherIcon {
-	// always start with area
-	Area area;
-	Imlib_Image icon_scaled;
-	Imlib_Image icon_original;
-	char *cmd;
-	char *icon_name;
-	char *icon_path;
-	char *icon_tooltip;
-	int icon_size;
-	int is_app_desktop;
-	int x, y;
+    // always start with area
+    Area area;
+    Imlib_Image icon_scaled;
+    Imlib_Image icon_original;
+    char *cmd;
+    char *icon_name;
+    char *icon_path;
+    char *icon_tooltip;
+    int icon_size;
+    int is_app_desktop;
+    int x, y;
 } LauncherIcon;
 
 typedef struct DesktopEntry {
-	char *name;
-	char *exec;
-	char *icon;
+    char *name;
+    char *exec;
+    char *icon;
 } DesktopEntry;
 
 #define ICON_DIR_TYPE_SCALABLE 0
 #define ICON_DIR_TYPE_FIXED 1
 #define ICON_DIR_TYPE_THRESHOLD 2
 typedef struct IconThemeDir {
-	char *name;
-	int size;
-	int type;
-	int max_size;
-	int min_size;
-	int threshold;
-	char *context;
+    char *name;
+    int size;
+    int type;
+    int max_size;
+    int min_size;
+    int threshold;
+    char *context;
 } IconThemeDir;
 
 typedef struct IconTheme {
-	char *name;
-	GSList *list_inherits; // each item is a char* (theme name)
-	GSList *list_directories; // each item is an IconThemeDir*
+    char *name;
+    GSList *list_inherits; // each item is a char* (theme name)
+    GSList *list_directories; // each item is an IconThemeDir*
 } IconTheme;
 
 extern int launcher_enabled;

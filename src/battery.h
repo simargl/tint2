@@ -20,31 +20,31 @@
 
 // battery drawing parameter (per panel)
 typedef struct Battery {
-	// always start with area
-	Area area;
+    // always start with area
+    Area area;
 
-	Color font;
-	int bat1_posy;
-	int bat2_posy;
+    Color font;
+    int bat1_posy;
+    int bat2_posy;
 } Battery;
 
 enum chargestate {
-	BATTERY_UNKNOWN,
-	BATTERY_CHARGING,
-	BATTERY_DISCHARGING,
-	BATTERY_FULL
+    BATTERY_UNKNOWN,
+    BATTERY_CHARGING,
+    BATTERY_DISCHARGING,
+    BATTERY_FULL
 };
 
 typedef struct battime {
-	int16_t hours;
-	int8_t minutes;
-	int8_t seconds;
+    int16_t hours;
+    int8_t minutes;
+    int8_t seconds;
 } battime;
 
 typedef struct batstate {
-	int percentage;
-	struct battime time;
-	enum chargestate state;
+    int percentage;
+    struct battime time;
+    enum chargestate state;
 } batstate;
 
 extern struct batstate battery_state;

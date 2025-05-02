@@ -22,27 +22,26 @@
 
 
 typedef struct {
-	// always start with area
-	Area area;
+    // always start with area
+    Area area;
 
-	GSList *list_icons;
-	int sort;
-	int alpha, saturation, brightness;
-	int icon_size, icons_per_column, icons_per_row, marging;
+    GSList *list_icons;
+    int sort;
+    int alpha, saturation, brightness;
+    int icon_size, icons_per_column, icons_per_row, marging;
 } Systraybar;
 
 
-typedef struct
-{
-	Window id;
-	Window tray_id;
-	int x, y;
-	int width, height;
-	// TODO: manage icon's show/hide
-	int hide;
-	int depth;
-	Damage damage;
-	timeout* render_timeout;
+typedef struct {
+    Window id;
+    Window tray_id;
+    int x, y;
+    int width, height;
+    // TODO: manage icon's show/hide
+    int hide;
+    int depth;
+    Damage damage;
+    timeout* render_timeout;
 } TrayWindow;
 
 

@@ -68,49 +68,49 @@ extern Imlib_Image default_icon;
 
 // tint2 use one panel per monitor and one taskbar per desktop.
 typedef struct {
-	// always start with area
-	// area.list own all objects of the panel according to config file
-	Area area;
+    // always start with area
+    // area.list own all objects of the panel according to config file
+    Area area;
 
-	// --------------------------------------------------
-	// panel
-	Window main_win;
-	Pixmap temp_pmap;
+    // --------------------------------------------------
+    // panel
+    Window main_win;
+    Pixmap temp_pmap;
 
-	// position relative to root window
-	int posx, posy;
-	int marginx, marginy;
-	int pourcentx, pourcenty;
-	// location of the panel (monitor number)
-	int monitor;
+    // position relative to root window
+    int posx, posy;
+    int marginx, marginy;
+    int pourcentx, pourcenty;
+    // location of the panel (monitor number)
+    int monitor;
 
-	// --------------------------------------------------
-	// task and taskbar parameter per panel
-	Global_taskbar g_taskbar;
-	Global_task g_task;
+    // --------------------------------------------------
+    // task and taskbar parameter per panel
+    Global_taskbar g_taskbar;
+    Global_task g_task;
 
-	// --------------------------------------------------
-	// taskbar point to the first taskbar in panel.area.list.
-	// number of tasbar == nb_desktop. taskbar[i] is for desktop(i).
-	// taskbar[i] is used to loop over taskbar,
-	// while panel->area.list is used to loop over all panel's objects
-	Taskbar *taskbar;
-	int  nb_desktop;
+    // --------------------------------------------------
+    // taskbar point to the first taskbar in panel.area.list.
+    // number of tasbar == nb_desktop. taskbar[i] is for desktop(i).
+    // taskbar[i] is used to loop over taskbar,
+    // while panel->area.list is used to loop over all panel's objects
+    Taskbar *taskbar;
+    int  nb_desktop;
 
-	// --------------------------------------------------
-	// clock
-	Clock clock;
+    // --------------------------------------------------
+    // clock
+    Clock clock;
 
-	// --------------------------------------------------
-	// battery
-	Battery battery;
-	Launcher launcher;
+    // --------------------------------------------------
+    // battery
+    Battery battery;
+    Launcher launcher;
 
-	// autohide
-	int is_hidden;
-	int hidden_width, hidden_height;
-	Pixmap hidden_pixmap;
-	timeout* autohide_timeout;
+    // autohide
+    int is_hidden;
+    int hidden_width, hidden_height;
+    Pixmap hidden_pixmap;
+    timeout* autohide_timeout;
 } Panel;
 
 

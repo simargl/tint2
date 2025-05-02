@@ -19,34 +19,34 @@ extern int taskbar_enabled;
 
 
 typedef struct {
-	// always start with area
-	Area area;
-	Pixmap state_pix[TASKBAR_STATE_COUNT];
+    // always start with area
+    Area area;
+    Pixmap state_pix[TASKBAR_STATE_COUNT];
 
-	char *name;
-	int  posy;
+    char *name;
+    int  posy;
 } Taskbarname;
 
 // tint2 use one taskbar per desktop.
 typedef struct {
-	// always start with area
-	Area area;
+    // always start with area
+    Area area;
 
-	int desktop;
-	Pixmap state_pix[TASKBAR_STATE_COUNT];
+    int desktop;
+    Pixmap state_pix[TASKBAR_STATE_COUNT];
 
-	Taskbarname bar_name;
-	
-	// task parameters
-	int text_width;
+    Taskbarname bar_name;
+
+    // task parameters
+    int text_width;
 } Taskbar;
 
 typedef struct {
-	//always start with area
-	Area area;
-	Area area_name;
-	Background* background[TASKBAR_STATE_COUNT];
-	Background* background_name[TASKBAR_STATE_COUNT];
+    //always start with area
+    Area area;
+    Area area_name;
+    Background* background[TASKBAR_STATE_COUNT];
+    Background* background_name[TASKBAR_STATE_COUNT];
 } Global_taskbar;
 
 
