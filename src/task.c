@@ -82,7 +82,7 @@ Task *add_task (Window win)
 	Task *new_tsk2=0;
 	int j;
 	for (j=0 ; j < panel1[monitor].nb_desktop ; j++) {
-		if (new_tsk.desktop != ALLDESKTOP && new_tsk.desktop != j) continue;
+		if (new_tsk.desktop != (int)ALLDESKTOP && new_tsk.desktop != j) continue;
 
 		tskbar = &panel1[monitor].taskbar[j];
 		new_tsk2 = malloc(sizeof(Task));
@@ -91,7 +91,7 @@ Task *add_task (Window win)
 		new_tsk2->win = new_tsk.win;
 		new_tsk2->desktop = new_tsk.desktop;
 		new_tsk2->current_state = -1;  // to update the current state later in set_task_state...
-		if (new_tsk2->desktop == ALLDESKTOP && server.desktop != j) {
+		if (new_tsk2->desktop == (int)ALLDESKTOP && server.desktop != j) {
 			// hide ALLDESKTOP task on non-current desktop
 			new_tsk2->area.on_screen = 0;
 		}
@@ -142,7 +142,7 @@ void remove_task (Task *tsk)
 		}
 	}
 
-	int i;
+	unsigned int i;
 	Task *tsk2;
 	Taskbar *tskbar;
 	GPtrArray* task_group = g_hash_table_lookup(win_to_task_table, &win);
@@ -199,7 +199,7 @@ int get_title(Task *tsk)
 	tsk->title = title;
 	GPtrArray* task_group = task_get_tasks(tsk->win);
 	if (task_group) {
-		int i;
+		unsigned int i;
 		for (i=0; i<task_group->len; ++i) {
 			Task* tsk2 = g_ptr_array_index(task_group, i);
 			tsk2->title = tsk->title;
@@ -301,11 +301,11 @@ void get_icon (Task *tsk)
 
 	GPtrArray* task_group = task_get_tasks(tsk->win);
 	if (task_group) {
-		for (i=0; i<task_group->len; ++i) {
+		for (guint i=0; i<task_group->len; ++i) {
 			Task* tsk2 = g_ptr_array_index(task_group, i);
 			tsk2->icon_width = tsk->icon_width;
 			tsk2->icon_height = tsk->icon_height;
-			int k;
+			unsigned int k;
 			for (k=0; k<TASK_STATE_COUNT; ++k)
 				tsk2->icon[k] = tsk->icon[k];
 			set_task_redraw(tsk2);
@@ -488,7 +488,7 @@ void set_task_state(Task *tsk, int state)
 	if (tsk->current_state != state) {
 		GPtrArray* task_group = task_get_tasks(tsk->win);
 		if (task_group) {
-			int i;
+			unsigned int i;
 			for (i=0; i<task_group->len; ++i) {
 				Task* tsk1 = g_ptr_array_index(task_group, i);
 				tsk1->current_state = state;
@@ -519,7 +519,8 @@ void set_task_redraw(Task* tsk)
 
 void blink_urgent(void* arg)
 {
-	GSList* urgent_task = urgent_list;
+	(void)arg;
+    GSList* urgent_task = urgent_list;
 	while (urgent_task) {
 		Task* t = urgent_task->data;
 		if ( t->urgent_tick < max_tick_urgent) {

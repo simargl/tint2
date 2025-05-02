@@ -117,7 +117,9 @@ void init_systray_panel(void *p)
 
 void draw_systray(void *obj, cairo_t *c)
 {
-	if (server.real_transparency || systray.alpha != 100 || systray.brightness != 0 || systray.saturation != 0) {
+    (void)obj;
+    (void)c;
+    if (server.real_transparency || systray.alpha != 100 || systray.brightness != 0 || systray.saturation != 0) {
 		if (render_background) XFreePixmap(server.dsp, render_background);
 		render_background = XCreatePixmap(server.dsp, server.root_win, systray.area.width, systray.area.height, server.depth);
 		XCopyArea(server.dsp, systray.area.pix, render_background, server.gc, 0, 0, systray.area.width, systray.area.height, 0, 0);

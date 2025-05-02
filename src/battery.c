@@ -67,7 +67,8 @@ int apm_fd;
 
 void update_batterys(void* arg)
 {
-	int old_percentage = battery_state.percentage;
+	(void)arg;
+    int old_percentage = battery_state.percentage;
 	int16_t old_hours = battery_state.time.hours;
 	int8_t old_minutes = battery_state.time.minutes;
 	

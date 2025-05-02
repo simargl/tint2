@@ -287,7 +287,8 @@ const char* launcher_icon_get_tooltip_text(void *obj)
 
 void draw_launcher_icon(void *obj, cairo_t *c)
 {
-	LauncherIcon *launcherIcon = (LauncherIcon*)obj;
+	(void)c;
+    LauncherIcon *launcherIcon = (LauncherIcon*)obj;
 	Imlib_Image icon_scaled = launcherIcon->icon_scaled;
 	// Render
 	imlib_context_set_image (icon_scaled);

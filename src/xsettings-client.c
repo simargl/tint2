@@ -48,7 +48,8 @@ struct _XSettingsClient
 
 void xsettings_notify_cb (const char *name, XSettingsAction action, XSettingsSetting *setting, void *data)
 {
-	//printf("xsettings_notify_cb\n");
+	(void)data;
+    //printf("xsettings_notify_cb\n");
 	if ((action == XSETTINGS_ACTION_NEW || action == XSETTINGS_ACTION_CHANGED) && name != NULL && setting != NULL) {
 		if (!strcmp(name, "Net/IconThemeName") && setting->type == XSETTINGS_TYPE_STRING) {
 			if (icon_theme_name) {
@@ -110,7 +111,9 @@ static void notify_changes (XSettingsClient *client, XSettingsList *old_list)
 
 static int ignore_errors (Display *display, XErrorEvent *event)
 {
-	return True;
+	(void)display;
+    (void)event;
+    return True;
 }
 
 static char local_byte_order = '\0';
@@ -229,7 +232,7 @@ static XSettingsList *parse_settings (unsigned char *data, size_t len)
 			goto out;
 
 		pad_len = XSETTINGS_PAD(name_len, 4);
-		if (BYTES_LEFT (&buffer) < pad_len) {
+		if ((size_t)BYTES_LEFT (&buffer) < pad_len) {
 			result = XSETTINGS_ACCESS;
 			goto out;
 		}
@@ -270,7 +273,7 @@ static XSettingsList *parse_settings (unsigned char *data, size_t len)
 
 			pad_len = XSETTINGS_PAD (v_int, 4);
 			if (v_int + 1 == 0 || /* Guard against wrap-around */
-			BYTES_LEFT (&buffer) < pad_len) {
+			(size_t)BYTES_LEFT (&buffer) < pad_len) {
 				result = XSETTINGS_ACCESS;
 				goto out;
 			}

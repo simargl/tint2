@@ -52,7 +52,7 @@ void init_tooltip();
 void tooltip_trigger_show(Area* area, Panel* p, XEvent *e);
 void tooltip_show(void* /*arg*/);
 void tooltip_update();
-void tooltip_trigger_hide();
+void tooltip_trigger_hide(Tooltip* tooltip);
 void tooltip_hide(void* /*arg*/);
 void tooltip_copy_text(Area* area);
 

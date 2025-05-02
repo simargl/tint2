@@ -31,7 +31,11 @@
 #include "task.h"
 #include "window.h"
 
-void server_catch_error (Display *d, XErrorEvent *ev){}
+int server_catch_error (Display *d, XErrorEvent *ev){
+    (void)d;
+    (void)ev;
+    return 0;
+}
 
 void server_init_atoms ()
 {
@@ -190,7 +194,7 @@ void get_root_pixmap()
 
 	unsigned long *res;
 	Atom pixmap_atoms[] = { server.atom._XROOTPMAP_ID, server.atom._XROOTMAP_ID };
-	int i;
+	unsigned int i;
 
 	for (i=0; i<sizeof(pixmap_atoms)/sizeof(Atom); ++i) {
 		res = server_get_property (server.root_win, pixmap_atoms[i], XA_PIXMAP, 0);

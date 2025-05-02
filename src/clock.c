@@ -84,7 +84,8 @@ void cleanup_clock()
 
 void update_clocks_sec(void* arg)
 {
-	gettimeofday(&time_clock, 0);
+	(void)arg;
+    gettimeofday(&time_clock, 0);
 	int i;
 	if (time1_format) {
 		for (i=0 ; i < nb_panel ; i++)
@@ -97,7 +98,8 @@ void update_clocks_min(void* arg)
 {
 	// remember old_sec because after suspend/hibernate the clock should be updated directly, and not
 	// on next minute change
-	time_t old_sec = time_clock.tv_sec;
+	(void)arg;
+    time_t old_sec = time_clock.tv_sec;
 	gettimeofday(&time_clock, 0);
 	if (time_clock.tv_sec % 60 == 0 || time_clock.tv_sec - old_sec > 60) {
 		int i;
@@ -123,7 +125,8 @@ struct tm* clock_gettime_for_tz(const char* timezone) {
 
 const char* clock_get_tooltip(void* obj)
 {
-	strftime(buf_tooltip, sizeof(buf_tooltip), time_tooltip_format, clock_gettime_for_tz(time_tooltip_timezone));
+	(void)obj;
+    strftime(buf_tooltip, sizeof(buf_tooltip), time_tooltip_format, clock_gettime_for_tz(time_tooltip_timezone));
 	return buf_tooltip;
 }
 

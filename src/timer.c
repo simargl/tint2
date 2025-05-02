@@ -74,8 +74,8 @@ void cleanup_timeout()
 		timeout* t = timeout_list->data;
 		if (t->multi_timeout)
 			stop_multi_timeout(t);
-		free(t);
 		timeout_list = g_slist_remove(timeout_list, t);
+        free(t);
 	}
 	if (multi_timeouts) {
 		g_hash_table_destroy(multi_timeouts);
@@ -103,8 +103,7 @@ timeout* add_timeout(int value_msec, int interval_msec, void (*_callback)(void*)
 	return t;
 }
 
-
-void change_timeout(timeout *t, int value_msec, int interval_msec, void(*_callback)(), void* arg)
+void change_timeout(timeout *t, int value_msec, int interval_msec, void(*_callback)(void*), void* arg)
 {
 	if ( g_slist_find(timeout_list, t) == 0 && g_hash_table_lookup(multi_timeouts, t) == 0)
 		printf("programming error: timeout already deleted...");
@@ -175,8 +174,7 @@ void stop_timeout(timeout* t)
 	}
 }
 
-
-void add_timeout_intern(int value_msec, int interval_msec, void(*_callback)(), void* arg, timeout *t)
+void add_timeout_intern(int value_msec, int interval_msec, void(*_callback)(void*), void* arg, timeout *t)
 {
 	t->interval_msec = interval_msec;
 	t->_callback = _callback;

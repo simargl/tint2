@@ -128,7 +128,8 @@ void cleanup_panel()
 
 void init_panel()
 {
-	int i, k;
+	unsigned int k;
+    int i;
 	Panel *p;
 
 	if (panel_config.monitor > (server.nb_monitor-1)) {
@@ -380,7 +381,8 @@ void update_strut(Panel* p)
 
 void set_panel_items_order(Panel *p)
 {
-	int k, j;
+	unsigned int k;
+    int j;
 	
 	if (p->area.list) {
 		g_slist_free(p->area.list);

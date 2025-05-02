@@ -237,7 +237,9 @@ void init_taskbar_panel(void *p)
 
 void taskbar_remove_task(gpointer key, gpointer value, gpointer user_data)
 {
-	remove_task(task_get_task(*(Window*)key));
+    (void)value;
+    (void)user_data;
+    remove_task(task_get_task(*(Window*)key));
 }
 
 
@@ -291,7 +293,8 @@ void task_refresh_tasklist ()
 
 void draw_taskbar (void *obj, cairo_t *c)
 {
-	Taskbar *taskbar = obj;
+	(void)c;
+    Taskbar *taskbar = obj;
 	int state = (taskbar->desktop == server.desktop) ? TASKBAR_ACTIVE : TASKBAR_NORMAL;
 	
 	taskbar->state_pix[state] = taskbar->area.pix;

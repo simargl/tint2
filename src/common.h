@@ -53,7 +53,7 @@ void extract_values (const char *value, char **value1, char **value2, char **val
 
 // adjust Alpha/Saturation/Brightness on an ARGB icon
 // alpha from 0 to 100, satur from 0 to 1, bright from 0 to 1.
-void adjust_asb(DATA32 *data, int w, int h, int alpha, float satur, float bright);
+void adjust_asb(DATA32 *data, unsigned int w, unsigned int h, int alpha, float satur, float bright);
 void createHeuristicMask(DATA32* data, int w, int h);
 
 void render_image(Drawable d, int x, int y, int w, int h);

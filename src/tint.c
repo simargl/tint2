@@ -362,7 +362,7 @@ void event_button_motion_notify (XEvent *e)
 		}
 	}
 	else { // The event is on another taskbar than the task being dragged
-		if(task_drag->desktop == ALLDESKTOP || panel_mode != MULTI_DESKTOP)
+		if(task_drag->desktop == (int)ALLDESKTOP || panel_mode != MULTI_DESKTOP)
 			return;
 
 		Taskbar * drag_taskbar = (Taskbar*)task_drag->area.parent;
@@ -554,7 +554,7 @@ void event_property_notify (XEvent *e)
 					if (taskbarname_enabled) l = l->next;
 					for (; l ; l = l->next) {
 						tsk = l->data;
-						if (tsk->desktop == ALLDESKTOP) {
+						if (tsk->desktop == (int)ALLDESKTOP) {
 							tsk->area.on_screen = 0;
 							tskbar->area.resize = 1;
 							panel_refresh = 1;
@@ -566,7 +566,7 @@ void event_property_notify (XEvent *e)
 				if (taskbarname_enabled) l = l->next;
 				for (; l ; l = l->next) {
 					tsk = l->data;
-					if (tsk->desktop == ALLDESKTOP) {
+					if (tsk->desktop == (int)ALLDESKTOP) {
 						tsk->area.on_screen = 1;
 						tskbar->area.resize = 1;
 					}
@@ -877,12 +877,12 @@ start:
 						if (area->_get_tooltip_text)
 							tooltip_trigger_show(area, panel, &e);
 						else
-							tooltip_trigger_hide();
+							tooltip_trigger_hide(&g_tooltip);
 						break;
 					}
 
 					case LeaveNotify:
-						tooltip_trigger_hide();
+						tooltip_trigger_hide(&g_tooltip);
 						break;
 
 					case Expose:
@@ -924,7 +924,7 @@ start:
 
 					case ClientMessage:
 						ev = &e.xclient;
-						if (ev->data.l[1] == server.atom._NET_WM_CM_S0) {
+						if ((Atom)ev->data.l[1] == server.atom._NET_WM_CM_S0) {
 							if (ev->data.l[2] == None)
 								// Stop real_transparency
 								signal_pending = SIGUSR1;

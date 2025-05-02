@@ -124,7 +124,7 @@ void send_event32 (Window win, Atom at, long data1, long data2, long data3);
 int  get_property32 (Window win, Atom at, Atom type);
 void *server_get_property (Window win, Atom at, Atom type, int *num_results);
 Atom server_get_atom (char *atom_name);
-void server_catch_error (Display *d, XErrorEvent *ev);
+int server_catch_error (Display *d, XErrorEvent *ev);
 void server_init_atoms ();
 void server_init_visual();
 

@@ -36,13 +36,16 @@ void copy_file(const char *pathSrc, const char *pathDest)
 {
 	FILE *fileSrc, *fileDest;
 	char line[100];
-	int  nb;
+	size_t nb;
 
 	fileSrc = fopen(pathSrc, "rb");
 	if (fileSrc == NULL) return;
 
 	fileDest = fopen(pathDest, "wb");
-	if (fileDest == NULL) return;
+	if (fileDest == NULL) {
+		fclose(fileSrc);
+		return;
+	}
 
 	while ((nb = fread(line, 1, 100, fileSrc)) > 0)
 		if ( nb != fwrite(line, 1, nb, fileDest))
@@ -185,12 +188,12 @@ void extract_values (const char *value, char **value1, char **value2, char **val
 }
 
 
-void adjust_asb(DATA32 *data, int w, int h, int alpha, float satur, float bright)
+void adjust_asb(DATA32 *data, unsigned int w, unsigned int h, int alpha, float satur, float bright)
 {
 	unsigned int x, y;
 	unsigned int a, r, g, b, argb;
 	unsigned long id;
-	int cmax, cmin;
+	unsigned int cmax, cmin;
 	float h2, f, p, q, t;
 	float hue, saturation, brightness;
 	float redc, greenc, bluec;

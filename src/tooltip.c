@@ -98,7 +98,8 @@ void tooltip_trigger_show(Area* area, Panel* p, XEvent *e)
 
 void tooltip_show(void* arg)
 {
-	int mx, my;
+	(void)arg;
+    int mx, my;
 	Window w;
 	XTranslateCoordinates( server.dsp, server.root_win, g_tooltip.panel->main_win, x, y, &mx, &my, &w);
 	Area* area;
@@ -252,7 +253,8 @@ void tooltip_update()
 
 void tooltip_trigger_hide(Tooltip* tooltip)
 {
-	if (g_tooltip.mapped) {
+	(void)tooltip;
+    if (g_tooltip.mapped) {
 		tooltip_copy_text(0);
 		start_hide_timeout();
 	}
@@ -265,7 +267,8 @@ void tooltip_trigger_hide(Tooltip* tooltip)
 
 void tooltip_hide(void* arg)
 {
-	stop_tooltip_timeout();
+	(void)arg;
+    stop_tooltip_timeout();
 	if (g_tooltip.mapped) {
 		g_tooltip.mapped = False;
 		XUnmapWindow(server.dsp, g_tooltip.window);
