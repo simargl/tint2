@@ -6,12 +6,12 @@ Install the required development tools and dependencies.
 ### On Debian/Ubuntu:
 ```bash
 sudo apt update
-sudo apt install git meson ninja-build gcc g++ libgtk-3-dev libx11-dev
+sudo apt install git meson ninja-build gcc g++ libgtk-3-dev libx11-dev libimlib2-dev
 ```
 
 ### On Arch Linux:
 ```bash
-sudo pacman -S git meson ninja gcc g++ gtk3 libx11
+sudo pacman -S git meson ninja gcc g++ gtk3 libx11 imlib2
 ```
 
 ## Clone the Repository
