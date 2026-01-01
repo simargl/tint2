@@ -1,13 +1,13 @@
 # Tint2 config file
 
 # ID 1
-rounded = 6
+rounded = 0
 border_width = 0
 background_color = #1E1E1E 45
 border_color = #FFFFFF 0
 
 # ID 2
-rounded = 6
+rounded = 0
 border_width = 0
 background_color = #15539E 90
 border_color = #FFFFFF 0
@@ -26,8 +26,8 @@ border_color = #FFFFFF 0
 
 # Panel
 panel_monitor = all
-panel_position = bottom center horizontal
-panel_size = 50% 48
+panel_position = top center horizontal
+panel_size = 100% 30
 panel_margin = 0 0
 panel_padding = 0 0 0
 panel_dock = 0
@@ -45,7 +45,7 @@ strut_policy = follow_size
 
 # Taskbar
 taskbar_mode = multi_desktop
-taskbar_padding = 5 5 5
+taskbar_padding = 1 1 1
 taskbar_background_id = 4
 taskbar_active_background_id = 1
 
@@ -54,8 +54,8 @@ urgent_nb_of_blink = 8
 task_icon = 1
 task_text = 0
 task_centered = 1
-task_maximum_size = 43 43
-task_padding = 8 7
+task_maximum_size = 40 40
+task_padding = 2 2
 task_background_id = 4
 task_active_background_id = 2
 task_urgent_background_id = 4
@@ -90,8 +90,8 @@ time1_font = Consolas 14
 time2_format = 
 time2_font = 
 clock_font_color = #FFFFFF 74
-clock_padding = 5 0
-clock_background_id = 4
+clock_padding = 8 7
+clock_background_id = 2
 clock_rclick_command = 
 
 # Tooltips
