@@ -1,19 +1,19 @@
 # Tint2 config file
 
 # ID 1
-rounded = 0
+rounded = 20
 border_width = 0
 background_color = #1E1E1E 45
 border_color = #FFFFFF 0
 
 # ID 2
-rounded = 0
+rounded = 20
 border_width = 0
 background_color = #15539E 90
 border_color = #FFFFFF 0
 
 # ID 3
-rounded = 0
+rounded = 20
 border_width = 0
 background_color = #1E1E1E 55
 border_color = #FFFFFF 0
@@ -27,7 +27,7 @@ border_color = #FFFFFF 0
 # Panel
 panel_monitor = all
 panel_position = top center horizontal
-panel_size = 100% 16
+panel_size = 100% 40
 panel_margin = 0 0
 panel_padding = 0 0 0
 panel_dock = 0
@@ -44,7 +44,7 @@ autohide_height = 2
 strut_policy = follow_size
 
 # Taskbar
-taskbar_mode = single_desktop
+taskbar_mode = multi_desktop
 taskbar_padding = 0 0 0
 taskbar_background_id = 4
 taskbar_active_background_id = 1
@@ -52,10 +52,10 @@ taskbar_active_background_id = 1
 # Tasks
 urgent_nb_of_blink = 8
 task_icon = 1
-task_text = 1
-task_centered = 0
-task_maximum_size = 358 16
-task_padding = 0 0
+task_text = 0
+task_centered = 1
+task_maximum_size = 50 0
+task_padding = 4 4
 task_background_id = 4
 task_active_background_id = 2
 task_urgent_background_id = 4
@@ -90,9 +90,10 @@ time1_font = Consolas 14
 time2_format = 
 time2_font = 
 clock_font_color = #FFFFFF 74
-clock_padding = 0 0
+clock_padding = 20 0
 clock_background_id = 2
-clock_rclick_command = 
+clock_lclick_command = xdotool key super+d
+clock_rclick_command = xdotool key super+Tab
 
 # Tooltips
 tooltip = 1
