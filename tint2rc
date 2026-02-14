@@ -1,19 +1,19 @@
 # Tint2 config file
 
 # ID 1
-rounded = 20
+rounded = 0
 border_width = 0
 background_color = #1E1E1E 45
 border_color = #FFFFFF 0
 
 # ID 2
-rounded = 20
+rounded = 3
 border_width = 0
 background_color = #15539E 90
 border_color = #FFFFFF 0
 
 # ID 3
-rounded = 20
+rounded = 0
 border_width = 0
 background_color = #1E1E1E 55
 border_color = #FFFFFF 0
@@ -26,8 +26,8 @@ border_color = #FFFFFF 0
 
 # Panel
 panel_monitor = all
-panel_position = top center horizontal
-panel_size = 100% 40
+panel_position = top left vertical
+panel_size = 100% 48 
 panel_margin = 0 0
 panel_padding = 0 0 0
 panel_dock = 0
@@ -44,8 +44,8 @@ autohide_height = 2
 strut_policy = follow_size
 
 # Taskbar
-taskbar_mode = multi_desktop
-taskbar_padding = 0 0 0
+taskbar_mode = single_desktop
+taskbar_padding = 20 0 6
 taskbar_background_id = 4
 taskbar_active_background_id = 1
 
@@ -54,8 +54,8 @@ urgent_nb_of_blink = 8
 task_icon = 1
 task_text = 0
 task_centered = 1
-task_maximum_size = 50 0
-task_padding = 4 4
+task_maximum_size = 48 48
+task_padding = 3 3
 task_background_id = 4
 task_active_background_id = 2
 task_urgent_background_id = 4
@@ -68,7 +68,7 @@ task_urgent_icon_asb = 100 0 0
 task_iconified_icon_asb = 80 0 0
 
 # Fonts
-task_font = Ubuntu 11
+task_font = Droid Sans 11
 task_font_color = #FFFFFF 88
 task_active_font_color = #FFFFFF 100
 task_urgent_font_color = #FFFFFF 88
@@ -85,12 +85,12 @@ systray_icon_size = 24
 systray_icon_asb = 70 0 0
 
 # Clock
-time1_format = %b %d, %H:%M
-time1_font = Consolas 14
-time2_format = 
-time2_font = 
+time1_format = %b %d
+time1_font = Consolas 11
+time2_format = %H:%M
+time2_font = Consolas 13
 clock_font_color = #FFFFFF 74
-clock_padding = 20 0
+clock_padding = 0 0
 clock_background_id = 2
 clock_lclick_command = xdotool key super+d
 clock_rclick_command = xdotool key super+Tab
@@ -101,7 +101,7 @@ tooltip_padding = 0 0
 tooltip_show_timeout = 0.7
 tooltip_hide_timeout = 0.3
 tooltip_background_id = 1
-tooltip_font = Ubuntu 11
+tooltip_font = Droid Sans 11
 tooltip_font_color = #FFFFFF 80
 
 # Mouse
@@ -115,8 +115,8 @@ battery = 0
 battery_low_status = 10
 battery_low_cmd = notify-send "battery low"
 battery_hide = 98
-bat1_font = Ubuntu 11
-bat2_font = Ubuntu 11
+bat1_font = Droid Sans 11
+bat2_font = Droid Sans 11
 battery_font_color = #FFFFFF 74
 battery_padding = 0 0
 battery_background_id = 4
@@ -126,6 +126,6 @@ battery_background_id = 4
 #------------------------------------------  
 launcher_icon_theme = Adwaita
 launcher_padding = 0 0
-launcher_background_id = 
-launcher_icon_size = 32
-launcher_item_app = 
+launcher_background_id = 1
+launcher_icon_size = 48
+launcher_item_app = /usr/share/applications/dlauncher.desktop
