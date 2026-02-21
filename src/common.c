@@ -56,24 +56,38 @@ void copy_file(const char *pathSrc, const char *pathDest) {
 
 
 int parse_line (const char *line, char **key, char **value) {
-    char *a, *b;
+    char *copy, *a, *b;
+
+    if (!line)
+        return 0;
 
     /* Skip useless lines */
-    if ((line[0] == '#') || (line[0] == '\n')) return 0;
-    if (!(a = strchr (line, '='))) return 0;
+    if (line[0] == '#' || line[0] == '\n')
+        return 0;
 
-    /* overwrite '=' with '\0' */
-    a[0] = '\0';
-    *key = strdup (line);
+    /* Work on a writable copy */
+    copy = strdup(line);
+    if (!copy)
+        return 0;
+
+    if (!(a = strchr(copy, '='))) {
+        free(copy);
+        return 0;
+    }
+
+    *a = '\0';
     a++;
 
-    /* overwrite '\n' with '\0' if '\n' present */
-    if ((b = strchr (a, '\n'))) b[0] = '\0';
+    if ((b = strchr(a, '\n')))
+        *b = '\0';
 
-    *value = strdup (a);
+    *key = strdup(copy);
+    *value = strdup(a);
 
     g_strstrip(*key);
     g_strstrip(*value);
+
+    free(copy);
     return 1;
 }
 
@@ -140,39 +154,50 @@ void get_color (char *hex, double *rgb) {
 }
 
 
-void extract_values (const char *value, char **value1, char **value2, char **value3) {
-    char *b=0, *c=0;
 
-    if (*value1) free (*value1);
-    if (*value2) free (*value2);
-    if (*value3) free (*value3);
+void extract_values (const char *value,
+                     char **value1,
+                     char **value2,
+                     char **value3)
+{
+    char *copy, *b = NULL, *c = NULL;
 
-    if ((b = strchr (value, ' '))) {
-        b[0] = '\0';
+    if (!value)
+        return;
+
+    if (*value1) { free(*value1); *value1 = NULL; }
+    if (*value2) { free(*value2); *value2 = NULL; }
+    if (*value3) { free(*value3); *value3 = NULL; }
+
+    /* Work on writable copy */
+    copy = strdup(value);
+    if (!copy)
+        return;
+
+    if ((b = strchr(copy, ' '))) {
+        *b = '\0';
         b++;
-    } else {
-        *value2 = 0;
-        *value3 = 0;
     }
-    *value1 = strdup (value);
+
+    *value1 = strdup(copy);
     g_strstrip(*value1);
 
     if (b) {
-        if ((c = strchr (b, ' '))) {
-            c[0] = '\0';
+        if ((c = strchr(b, ' '))) {
+            *c = '\0';
             c++;
-        } else {
-            c = 0;
-            *value3 = 0;
         }
-        *value2 = strdup (b);
+
+        *value2 = strdup(b);
         g_strstrip(*value2);
     }
 
     if (c) {
-        *value3 = strdup (c);
+        *value3 = strdup(c);
         g_strstrip(*value3);
     }
+
+    free(copy);
 }
 
 
