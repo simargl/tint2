@@ -1,41 +1,58 @@
-# Tint2 Installation Instructions
+# Tint2
 
-## Prerequisites
-Install the required development tools and dependencies.
+## Dependencies
 
-### On Debian/Ubuntu:
+### Debian/Ubuntu
+
 ```bash
 sudo apt update
-sudo apt install git meson ninja-build gcc g++ libx11-dev libimlib2-dev
+sudo apt install gcc pkg-config libcairo2-dev libpango1.0-dev libx11-dev libxinerama-dev libxrender-dev libxrandr-dev libxdamage-dev libxcomposite-dev libimlib2-dev libglib2.0-dev
 ```
 
-### On Arch Linux:
+### Arch Linux
+
 ```bash
-sudo pacman -S git meson ninja gcc g++ libx11 imlib2
+sudo pacman -S gcc pkg-config cairo pango libx11 libxinerama libxrender libxrandr libxdamage libxcomposite imlib2 glib2
 ```
 
-## Clone the Repository
+## Build
+
 ```bash
 git clone https://github.com/simargl/tint2.git
 cd tint2
+make
 ```
 
-## Configure and Build Using Meson
+## Install
+
 ```bash
-meson build
-ninja -C build
+sudo make install
 ```
 
-## Install Tint2
-```bash
-sudo ninja -C build install
-```
+## Run
 
-## Run Tint2
 ```bash
 tint2 &
 ```
 
-## Additional Tips
-- To customize Tint2, edit the configuration file located at `~/.config/tint2/tint2rc`.
-- To start Tint2 automatically on login, add `tint2 &` to your desktop environment's startup applications.
+## Uninstall
+
+```bash
+sudo make uninstall
+```
+
+## Clean
+
+```bash
+make clean
+```
+
+## Configuration
+
+Edit:
+
+```text
+~/.config/tint2/tint2rc
+```
+
+To start Tint2 automatically, add `tint2 &` to your desktop's startup applications.
